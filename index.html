@@ -401,6 +401,51 @@
     }
     .footer-legal button:hover { color: var(--white); }
 
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      cursor: zoom-out;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 92vw;
+      max-height: 88vh;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+      cursor: default;
+      animation: lbIn 0.25s ease;
+    }
+    .lightbox-close {
+      position: fixed;
+      top: 20px;
+      right: 24px;
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.15);
+      border: none;
+      border-radius: 50%;
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      z-index: 1001;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.3); }
+    .gallery-slot { cursor: pointer; }
+    .gallery-slot:hover .gallery-img { transform: scale(1.03); transition: transform 0.3s ease; }
+    @keyframes lbIn { from { opacity:0; transform: scale(0.95); } to { opacity:1; transform: scale(1); } }
+
     /* ── SCROLL REVEAL ── */
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -653,12 +698,12 @@
     <h2 class="section-title reveal" id="gallery-h">Seen it all.<br>Fixed it all.</h2>
     <p class="section-sub reveal">Real jobs. Real results. Add photos here to show Rochester what 38 years of craftsmanship looks like.</p>
     <div class="gallery-grid reveal">
-      <div class="gallery-slot"><img src="photo1.jpg" alt="TJ's Plumbing job photo" class="gallery-img" loading="lazy" /></div>
-      <div class="gallery-slot"><img src="photo2.jpg" alt="TJ's Plumbing job photo" class="gallery-img" loading="lazy" /></div>
-      <div class="gallery-slot"><img src="photo3.jpg" alt="TJ's Plumbing job photo" class="gallery-img" loading="lazy" /></div>
-      <div class="gallery-slot"><img src="photo4.jpg" alt="TJ's Plumbing job photo" class="gallery-img" loading="lazy" /></div>
-      <div class="gallery-slot"><img src="photo5.jpg" alt="TJ's Plumbing job photo" class="gallery-img" loading="lazy" /></div>
-      <div class="gallery-slot"><img src="photo6.jpg" alt="TJ's Plumbing job photo" class="gallery-img" loading="lazy" /></div>
+      <div class="gallery-slot" onclick="openLightbox('photo1.jpg')"><img src="photo1.jpg" alt="TJ's Plumbing job photo" class="gallery-img" loading="lazy" /></div>
+      <div class="gallery-slot" onclick="openLightbox('photo2.jpg')"><img src="photo2.jpg" alt="TJ's Plumbing job photo" class="gallery-img" loading="lazy" /></div>
+      <div class="gallery-slot" onclick="openLightbox('photo3.jpg')"><img src="photo3.jpg" alt="TJ's Plumbing job photo" class="gallery-img" loading="lazy" /></div>
+      <div class="gallery-slot" onclick="openLightbox('photo4.jpg')"><img src="photo4.jpg" alt="TJ's Plumbing job photo" class="gallery-img" loading="lazy" /></div>
+      <div class="gallery-slot" onclick="openLightbox('photo5.jpg')"><img src="photo5.jpg" alt="TJ's Plumbing job photo" class="gallery-img" loading="lazy" /></div>
+      <div class="gallery-slot" onclick="openLightbox('photo6.jpg')"><img src="photo6.jpg" alt="TJ's Plumbing job photo" class="gallery-img" loading="lazy" /></div>
     </div>
   </section>
 
@@ -893,6 +938,24 @@
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     reveals.forEach(el => io.observe(el));
+
+
+    // ── LIGHTBOX ──
+    function openLightbox(src) {
+      const lb = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      img.src = src;
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.getElementById('lightbox-img').src = '';
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
 
     // Close modals on Escape key
     document.addEventListener('keydown', (e) => {
