@@ -755,6 +755,13 @@
     <h2 class="section-title reveal" id="contact-h">Not a phone person?<br>We get it.</h2>
     <p class="section-sub reveal">Fill this out and TJ will reply within a few hours — usually sooner.</p>
     <div class="contact-inner reveal">
+      <!-- SUCCESS STATE -->
+      <div id="form-success" style="display:none; text-align:center; padding:48px 20px;">
+        <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#34c759" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 16px;display:block" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <h3 style="font-size:20px;font-weight:600;margin-bottom:8px;color:var(--charcoal)">Message received!</h3>
+        <p style="font-size:15px;color:var(--mid);line-height:1.6">TJ will be in touch within a few hours.<br>For anything urgent call <a href="tel:5856717465" style="color:var(--accent);font-weight:500">585-671-7465</a>.</p>
+      </div>
+
       <form id="ghl-form" aria-label="Contact form" novalidate>
         <div class="form-grid">
           <div class="form-field">
@@ -976,13 +983,12 @@
             throw new Error('DEV_MODE');
           }
 
-          const res = await fetch(GHL_WEBHOOK_URL, {
+          await fetch(GHL_WEBHOOK_URL, {
             method  : 'POST',
+            mode    : 'no-cors',
             headers : { 'Content-Type': 'application/json' },
             body    : JSON.stringify(payload)
           });
-
-          if (!res.ok) throw new Error('HTTP ' + res.status);
         } catch (err) {
           if (err.message !== 'DEV_MODE') {
             console.error('[GHL] Submission error:', err);
