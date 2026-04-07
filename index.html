@@ -940,11 +940,11 @@
       const lb = document.getElementById('lightbox');
       const img = document.getElementById('lightbox-img');
       img.src = src;
-      lb.classList.add('open');
+      lb.style.display = 'flex';
       document.body.style.overflow = 'hidden';
     }
     function closeLightbox() {
-      document.getElementById('lightbox').classList.remove('open');
+      document.getElementById('lightbox').style.display = 'none';
       document.getElementById('lightbox-img').src = '';
       document.body.style.overflow = '';
     }
