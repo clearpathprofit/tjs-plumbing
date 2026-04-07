@@ -1033,4 +1033,80 @@
             // Still show success to user (don't penalize them for network issues)
           }
         } finally {
-          // Always show succ
+
+          // Always show success to user — retry logic can be added later
+          form.style.display = 'none';
+          success.style.display = 'block';
+          success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      });
+    }
+
+    // ── SCROLL REVEAL ──
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const parent = entry.target.parentElement;
+        const pending = [...parent.querySelectorAll('.reveal:not(.visible)')];
+        const idx = pending.indexOf(entry.target);
+        setTimeout(() => entry.target.classList.add('visible'), Math.max(0, idx) * 80);
+        io.unobserve(entry.target);
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => io.observe(el));
+
+    // ── FAQ ACCORDION ──
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+        document.querySelectorAll('.faq-q').forEach(b => {
+          b.setAttribute('aria-expanded', 'false');
+          const panel = document.getElementById(b.getAttribute('aria-controls'));
+          if (panel) panel.classList.remove('open');
+        });
+        if (!isOpen) {
+          btn.setAttribute('aria-expanded', 'true');
+          const panel = document.getElementById(btn.getAttribute('aria-controls'));
+          if (panel) panel.classList.add('open');
+        }
+      });
+    });
+
+    // ── LIGHTBOX ──
+    function openLightbox(src) {
+      const lb = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      img.src = src;
+      lb.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+      document.getElementById('lightbox-img').src = '';
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeLightbox();
+        document.querySelectorAll('.modal-overlay.open').forEach(m => m.classList.remove('open'));
+      }
+    });
+
+  </script>
+
+  <!-- GHL Chat Widget -->
+  <script
+    src="https://widgets.leadconnectorhq.com/loader.js"
+    data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+    data-widget-id="69d44b380515dd6dcf894738">
+  </script>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:9999;align-items:center;justify-content:center;" onclick="closeLightbox()">
+    <button onclick="closeLightbox();event.stopPropagation();" style="position:fixed;top:16px;right:16px;width:56px;height:56px;background:rgba(255,255,255,0.25);border:2px solid rgba(255,255,255,0.6);border-radius:50%;color:#fff;font-size:28px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10000;line-height:1;">&#x2715;</button>
+    <img id="lightbox-img" src="" alt="TJ's Plumbing photo" onclick="event.stopPropagation();" style="max-width:96vw;max-height:92vh;width:auto;height:auto;object-fit:contain;border-radius:8px;display:block;" />
+  </div>
+
+</body>
+</html>
