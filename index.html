@@ -920,45 +920,6 @@
 
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // ── SCROLL REVEAL ── Fixed stagger: index calculated once per batch, not re-queried post-unobserve
-    const reveals = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        const parent = entry.target.parentElement;
-        const pending = [...parent.querySelectorAll('.reveal:not(.visible)')];
-        const idx = pending.indexOf(entry.target);
-        // Fixed: removed unused `i` parameter; delay based on sibling position
-        setTimeout(() => entry.target.classList.add('visible'), Math.max(0, idx) * 80);
-        io.unobserve(entry.target);
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    reveals.forEach(el => io.observe(el));
-
-
-    // ── LIGHTBOX ──
-    function openLightbox(src) {
-      const lb = document.getElementById('lightbox');
-      const img = document.getElementById('lightbox-img');
-      img.src = src;
-      lb.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-    }
-    function closeLightbox() {
-      document.getElementById('lightbox').style.display = 'none';
-      document.getElementById('lightbox-img').src = '';
-      document.body.style.overflow = '';
-    }
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeLightbox();
-    });
-
-    // Close modals on Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        document.querySelectorAll('.modal-overlay.open').forEach(m => m.classList.remove('open'));
-      }
-    });
-
     // ── FAQ ACCORDION ── Accessible: toggles aria-expanded, keyboard friendly
     document.querySelectorAll('.faq-q').forEach(btn => {
       btn.addEventListener('click', () => {
