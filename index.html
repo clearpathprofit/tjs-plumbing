@@ -768,25 +768,64 @@
     <h2 class="section-title reveal" id="contact-h">Not a phone person?<br>We get it.</h2>
     <p class="section-sub reveal">Fill this out and TJ will reply within a few hours — usually sooner.</p>
     <div class="contact-inner reveal">
-      <div style="min-height:600px;">
-        <iframe
-          src="https://api.leadconnectorhq.com/widget/form/6A9BY0zzAK9PhpeC7Zzg"
-          style="width:100%;min-height:600px;border:none;border-radius:12px;"
-          id="inline-6A9BY0zzAK9PhpeC7Zzg"
-          data-layout="{'id':'INLINE'}"
-          data-trigger-type="alwaysShow"
-          data-trigger-value=""
-          data-activation-type="alwaysActivated"
-          data-activation-value=""
-          data-deactivation-type="neverDeactivate"
-          data-deactivation-value=""
-          data-form-name="TJs Plumbing Contact Form"
-          data-layout-iframe-id="inline-6A9BY0zzAK9PhpeC7Zzg"
-          data-form-id="6A9BY0zzAK9PhpeC7Zzg"
-          title="TJs Plumbing Contact Form">
-        </iframe>
-        <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+
+      <!-- SUCCESS STATE -->
+      <div id="form-success" style="display:none; text-align:center; padding:48px 20px;">
+        <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#34c759" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 16px;display:block" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <h3 style="font-size:20px;font-weight:600;margin-bottom:8px;color:var(--charcoal)">Message received!</h3>
+        <p style="font-size:15px;color:var(--mid);line-height:1.6">TJ will be in touch within a few hours.<br>For anything urgent call <a href="tel:5856717465" style="color:var(--accent);font-weight:500">585-671-7465</a>.</p>
       </div>
+
+      <form id="ghl-form" aria-label="Contact form" novalidate>
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="first_name" autocomplete="given-name" placeholder="Jane" required />
+          </div>
+          <div class="form-field">
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="last_name" autocomplete="family-name" placeholder="Smith" required />
+          </div>
+          <div class="form-field">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="585-555-0100" />
+          </div>
+          <div class="form-field">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" autocomplete="email" placeholder="jane@email.com" />
+          </div>
+          <div class="form-field full">
+            <label for="service">Service Needed</label>
+            <select id="service" name="service">
+              <option value="">Select a service…</option>
+              <option>Emergency Repair</option>
+              <option>Drain Cleaning</option>
+              <option>Water Heater</option>
+              <option>Sump Pump</option>
+              <option>Sewer Line</option>
+              <option>Pipe Replacement</option>
+              <option>Fixture Installation</option>
+              <option>Leak Detection</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-field full">
+            <label for="message">Describe the Issue</label>
+            <textarea id="message" name="message" placeholder="Tell us what's going on — as much detail as you have…"></textarea>
+          </div>
+        </div>
+        <div style="display:flex; flex-direction:row; align-items:flex-start; gap:12px; margin-top:10px; padding:16px; background:var(--off-white); border-radius:var(--radius-sm); border:1.5px solid var(--border);">
+          <input type="checkbox" id="sms-consent" name="sms_consent" required
+                 style="margin-top:2px; width:20px; height:20px; flex-shrink:0; accent-color:var(--accent); cursor:pointer;" />
+          <label for="sms-consent" style="font-size:13px; color:var(--mid); line-height:1.55; font-weight:400; cursor:pointer;">
+            By checking this box, I agree to receive SMS text messages from TJ&#39;s Plumbing regarding my service inquiry, appointment updates, and follow-ups. Message &amp; data rates may apply. Reply STOP to opt out at any time. View our <button type="button" onclick="document.getElementById('privacy-modal').classList.add('open')" style="background:none;border:none;color:var(--accent);cursor:pointer;font-size:13px;padding:0;font-family:var(--font);text-decoration:underline;">Privacy Policy</button>.
+          </label>
+        </div>
+        <div class="form-submit">
+          <button type="submit" id="form-btn" class="btn-primary">Send Message</button>
+        </div>
+        <p class="form-note">We typically respond within 2–3 hours. For emergencies, please call directly.</p>
+      </form>
     </div>
   </section>
 
@@ -881,6 +920,57 @@
   </div>
 
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // ── GHL FORM HANDLER ──
+    const GHL_WEBHOOK_URL = '/.netlify/functions/submit';
+    const form    = document.getElementById('ghl-form');
+    const btn     = document.getElementById('form-btn');
+    const success = document.getElementById('form-success');
+
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const fname = form.first_name.value.trim();
+        const phone = form.phone.value.trim();
+        const email = form.email.value.trim();
+        const consent = document.getElementById('sms-consent').checked;
+
+        if (!fname) { form.first_name.focus(); return; }
+        if (!phone && !email) { form.phone.focus(); return; }
+        if (!consent) { document.getElementById('sms-consent').focus(); return; }
+
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+
+        const payload = {
+          firstName  : fname,
+          lastName   : form.last_name.value.trim(),
+          phone      : phone,
+          email      : email,
+          service    : form.service.value,
+          message    : form.message.value.trim(),
+          source     : "TJ's Plumbing Website",
+          tags       : ["website-lead", form.service.value || "general"].filter(Boolean),
+          notify_sms : "5854605987"
+        };
+
+        try {
+          const res = await fetch(GHL_WEBHOOK_URL, {
+            method  : 'POST',
+            headers : { 'Content-Type': 'application/json' },
+            body    : JSON.stringify(payload)
+          });
+          if (!res.ok) throw new Error('Network error');
+        } catch (err) {
+          console.error('[GHL] Error:', err);
+        } finally {
+          form.style.display = 'none';
+          success.style.display = 'block';
+          success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      });
+    }
+
     // ── SCROLL REVEAL ── Fixed stagger: index calculated once per batch, not re-queried post-unobserve
     // ── FAQ ACCORDION ── Accessible: toggles aria-expanded, keyboard friendly
     document.querySelectorAll('.faq-q').forEach(btn => {
