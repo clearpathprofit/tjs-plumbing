@@ -951,7 +951,11 @@
           message    : form.message.value.trim(),
           source     : "TJ's Plumbing Website",
           tags       : ["website-lead", form.service.value || "general"].filter(Boolean),
-          notify_sms : "5854605987"
+          notify_sms : "5854605987",
+          customField: {
+            service_type    : form.service.value,
+            customer_notes  : form.message.value.trim()
+          }
         };
 
         try {
