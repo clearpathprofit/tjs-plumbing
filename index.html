@@ -931,12 +931,22 @@
         e.preventDefault();
 
         const fname = form.first_name.value.trim();
-        const phone = form.phone.value.trim();
+        const rawPhone = form.phone.value.trim();
+        const digits = rawPhone.replace(/\D/g, '');
+        if (digits.length < 10 || digits.length > 11) { form.phone.focus(); form.phone.setCustomValidity('Please enter a valid 10-digit phone number.'); form.phone.reportValidity(); return; }
+        form.phone.setCustomValidity('');
+        const phone = digits.length === 10 ? '+1' + digits : digits.length === 11 && digits.startsWith('1') ? '+' + digits : rawPhone;
         const email = form.email.value.trim();
         const consent = document.getElementById('sms-consent').checked;
 
         if (!fname) { form.first_name.focus(); return; }
-        if (!phone && !email) { form.phone.focus(); return; }
+        if (!rawPhone) { form.phone.focus(); return; }
+        if (digits.length < 10) {
+          form.phone.setCustomValidity('Please enter a valid 10-digit phone number including area code.');
+          form.phone.reportValidity();
+          return;
+        }
+        form.phone.setCustomValidity('');
         if (!consent) { document.getElementById('sms-consent').focus(); return; }
 
         btn.disabled = true;
