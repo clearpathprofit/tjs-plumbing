@@ -1,0 +1,3 @@
+# Pretty URLs for the policy pages the SMS consent block links to.
+/privacy   /privacy.html   200
+/terms     /terms.html     200

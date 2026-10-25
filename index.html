@@ -11,6 +11,11 @@
   <meta property="og:type" content="website" />
   <link rel="canonical" href="https://tjsplumbingny.com" />
   <meta property="og:locale" content="en_US" />
+  <script>
+    /* Reveal animation opt-in. If this script is blocked or IntersectionObserver is
+       missing, html.js-reveal is never set and all content stays visible. */
+    try { if ('IntersectionObserver' in window) { document.documentElement.className += ' js-reveal'; } } catch (e) {}
+  </script>
   <title>TJ's Plumbing | Rochester, NY | tjsplumbingny.com</title>
   <style>
     :root {
@@ -442,15 +447,19 @@
     @keyframes lbIn { from { opacity:0; transform: scale(0.93); } to { opacity:1; transform: scale(1); } }
 
     /* ── SCROLL REVEAL ── */
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+    /* Content is VISIBLE by default. The hide-then-reveal effect applies only once JS
+       has confirmed it is running (html.js-reveal). If JS fails, is blocked, or errors
+       before this point, the page renders normally instead of going blank. */
+    .reveal { opacity: 1; transform: none; transition: opacity 0.7s ease, transform 0.7s ease; }
+    html.js-reveal .reveal { opacity: 0; transform: translateY(28px); }
+    html.js-reveal .reveal.visible { opacity: 1; transform: translateY(0); }
 
     @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
     /* ── REDUCED MOTION ── */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-      .reveal { opacity: 1; transform: none; }
+      .reveal, html.js-reveal .reveal { opacity: 1 !important; transform: none !important; }
       html { scroll-behavior: auto; }
     }
 
@@ -776,6 +785,14 @@
         <p style="font-size:15px;color:var(--mid);line-height:1.6">TJ will be in touch within a few hours.<br>For anything urgent call <a href="tel:5856717465" style="color:var(--accent);font-weight:500">585-671-7465</a>.</p>
       </div>
 
+      <!-- FAILURE STATE — shown only when the lead did NOT send -->
+      <div id="form-error" role="alert" style="display:none; text-align:center; padding:32px 20px; margin-bottom:8px; background:#FFF4F4; border:1.5px solid #F5C2C2; border-radius:var(--radius-sm);">
+        <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#C62828" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 14px;display:block" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="16.5" x2="12.01" y2="16.5"/></svg>
+        <h3 style="font-size:19px;font-weight:600;margin-bottom:8px;color:var(--charcoal)">That didn&#39;t go through</h3>
+        <p style="font-size:15px;color:var(--mid);line-height:1.6;margin-bottom:18px">Your message was not sent, so please don&#39;t wait on a reply. Call or text us directly and we&#39;ll take care of you.</p>
+        <a href="tel:5856717465" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 24px;border-radius:999px;background:var(--accent);color:#fff;font-size:16px;font-weight:600;text-decoration:none;touch-action:manipulation;">Call 585-671-7465</a>
+      </div>
+
       <form id="ghl-form" aria-label="Contact form" novalidate>
         <div class="form-grid">
           <div class="form-field">
@@ -788,7 +805,7 @@
           </div>
           <div class="form-field">
             <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="585-555-0100" />
+            <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="585-555-0100" required />
           </div>
           <div class="form-field">
             <label for="email">Email Address</label>
@@ -815,10 +832,12 @@
           </div>
         </div>
         <div style="display:flex; flex-direction:row; align-items:flex-start; gap:12px; margin-top:10px; padding:16px; background:var(--off-white); border-radius:var(--radius-sm); border:1.5px solid var(--border);">
-          <input type="checkbox" id="sms-consent" name="sms_consent" required
+          <!-- A2P 10DLC: consent is OPTIONAL and unchecked by default. It must never be
+               required, and the form must submit without it. -->
+          <input type="checkbox" id="sms-consent" name="sms_consent"
                  style="margin-top:2px; width:20px; height:20px; flex-shrink:0; accent-color:var(--accent); cursor:pointer;" />
-          <label for="sms-consent" style="font-size:13px; color:var(--mid); line-height:1.55; font-weight:400; cursor:pointer;">
-            By checking this box, I agree to receive SMS text messages from TJ&#39;s Plumbing regarding my service inquiry, appointment updates, and follow-ups. Message &amp; data rates may apply. Reply STOP to opt out at any time. View our <button type="button" onclick="document.getElementById('privacy-modal').classList.add('open')" style="background:none;border:none;color:var(--accent);cursor:pointer;font-size:13px;padding:0;font-family:var(--font);text-decoration:underline;">Privacy Policy</button>.
+          <label for="sms-consent" style="font-size:14px; color:var(--mid); line-height:1.55; font-weight:400; cursor:pointer;">
+            <strong style="font-weight:600;color:var(--charcoal)">Optional:</strong> I agree to receive SMS messages from TJ&#39;s Plumbing about my inquiry and appointments. Message frequency varies, 2&ndash;6 per inquiry. Message &amp; data rates may apply. Reply HELP for help, STOP to opt out. Not a condition of purchase. See our <a href="/privacy" style="color:var(--accent);text-decoration:underline;">Privacy Policy</a> and <a href="/terms" style="color:var(--accent);text-decoration:underline;">Terms of Service</a>.
           </label>
         </div>
         <div class="form-submit">
@@ -848,76 +867,15 @@
     <!-- FIXED: year was 2025, corrected to 2026 -->
     <span>© 2026 TJ's Plumbing. All rights reserved. &nbsp;·&nbsp; tjsplumbingny.com</span>
     <div class="footer-legal">
-      <button onclick="document.getElementById('privacy-modal').classList.add('open')" aria-label="Privacy Policy">Privacy Policy</button>
-      <button onclick="document.getElementById('terms-modal').classList.add('open')" aria-label="Terms of Service">Terms of Service</button>
-    </div>
+        <a href="/privacy" style="display:inline-flex;align-items:center;min-height:44px;padding:0 4px;touch-action:manipulation;">Privacy Policy</a>
+        <a href="/terms" style="display:inline-flex;align-items:center;min-height:44px;padding:0 4px;touch-action:manipulation;">Terms of Service</a>
+      </div>
   </footer>
 
 
-  <!-- PRIVACY POLICY MODAL -->
-  <div class="modal-overlay" id="privacy-modal" role="dialog" aria-modal="true" aria-labelledby="privacy-title"
-       onclick="if(event.target===this)this.classList.remove('open')">
-    <div class="modal-box">
-      <button class="modal-close" onclick="document.getElementById('privacy-modal').classList.remove('open')" aria-label="Close">&#x2715;</button>
-      <h2 id="privacy-title">Privacy Policy</h2>
-      <p class="modal-date">Effective Date: January 1, 2026</p>
+  
 
-      <h3>Information We Collect</h3>
-      <p>When you submit a contact form on tjsplumbingny.com, we collect your name, phone number, email address, and any details you provide about your plumbing needs.</p>
-
-      <h3>How We Use Your Information</h3>
-      <ul>
-        <li>To respond to your service inquiry</li>
-        <li>To schedule and confirm appointments</li>
-        <li>To send service-related text messages and follow-ups</li>
-        <li>To request a Google review after a completed job</li>
-      </ul>
-
-      <h3>SMS Communications</h3>
-      <p>By submitting your phone number, you consent to receive SMS messages from TJ's Plumbing regarding your service inquiry, appointment confirmations, and follow-ups. Message and data rates may apply. Reply STOP at any time to opt out.</p>
-
-      <h3>Data Sharing</h3>
-      <p>We do not sell, trade, or share your personal information with third parties except as required to provide our services or comply with the law.</p>
-
-      <h3>Data Retention</h3>
-      <p>We retain your information only as long as necessary to provide our services and comply with legal obligations.</p>
-
-      <h3>Contact Us</h3>
-      <p>If you have questions about this Privacy Policy, contact us at:<br>
-      TJ's Plumbing · Penfield, NY · 585-671-7465 · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1c4832717d6f686e732e2e5c657d747373327f7371">[email&#160;protected]</a></p>
-    </div>
-  </div>
-
-  <!-- TERMS OF SERVICE MODAL -->
-  <div class="modal-overlay" id="terms-modal" role="dialog" aria-modal="true" aria-labelledby="terms-title"
-       onclick="if(event.target===this)this.classList.remove('open')">
-    <div class="modal-box">
-      <button class="modal-close" onclick="document.getElementById('terms-modal').classList.remove('open')" aria-label="Close">&#x2715;</button>
-      <h2 id="terms-title">Terms of Service</h2>
-      <p class="modal-date">Effective Date: January 1, 2026</p>
-
-      <h3>Services</h3>
-      <p>TJ's Plumbing provides residential plumbing services in Monroe County, New York. All work is performed by a licensed and insured master plumber.</p>
-
-      <h3>Estimates and Quotes</h3>
-      <p>All quotes are free and provided in writing before any work begins. Final pricing may vary if additional issues are discovered during service. Any changes to scope will be communicated and approved before proceeding.</p>
-
-      <h3>Satisfaction Guarantee</h3>
-      <p>All labor is guaranteed for one year from the date of service. If you experience an issue related to our work within that period, we will return to correct it at no charge.</p>
-
-      <h3>Scheduling and Cancellations</h3>
-      <p>We ask for reasonable notice if you need to cancel or reschedule an appointment. Emergency services are available 24/7.</p>
-
-      <h3>SMS Consent</h3>
-      <p>By providing your phone number, you agree to receive SMS messages from TJ's Plumbing. You may opt out at any time by replying STOP. Message and data rates may apply.</p>
-
-      <h3>Limitation of Liability</h3>
-      <p>TJ's Plumbing is not liable for pre-existing conditions, damages caused by circumstances beyond our control, or issues unrelated to the work performed.</p>
-
-      <h3>Contact Us</h3>
-      <p>TJ's Plumbing · Penfield, NY · 585-671-7465 · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5b0f75363a282f293469691b223a33343475383436">[email&#160;protected]</a></p>
-    </div>
-  </div>
+  
 
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // ── GHL FORM HANDLER ──
@@ -925,6 +883,8 @@
     const form    = document.getElementById('ghl-form');
     const btn     = document.getElementById('form-btn');
     const success = document.getElementById('form-success');
+    const failure = document.getElementById('form-error');
+    const btnLabel = btn ? btn.textContent : 'Send';
 
     if (form) {
       form.addEventListener('submit', async (e) => {
@@ -947,7 +907,8 @@
           return;
         }
         form.phone.setCustomValidity('');
-        if (!consent) { document.getElementById('sms-consent').focus(); return; }
+        /* SMS consent is OPTIONAL and must never block submission. Its value rides
+           along in the payload so the CRM only texts contacts who opted in. */
 
         btn.disabled = true;
         btn.textContent = 'Sending…';
@@ -962,6 +923,7 @@
           source     : "TJ's Plumbing Website",
           tags       : ["website-lead", form.service.value || "general"].filter(Boolean),
           notify_sms : "5854605987",
+          sms_consent: consent,
           customField: {
             service_type    : form.service.value,
             customer_notes  : form.message.value.trim()
@@ -974,13 +936,21 @@
             headers : { 'Content-Type': 'application/json' },
             body    : JSON.stringify(payload)
           });
-          if (!res.ok) throw new Error('Network error');
-        } catch (err) {
-          console.error('[GHL] Error:', err);
-        } finally {
+          if (!res.ok) throw new Error('Lead endpoint returned ' + res.status);
+          /* Success is shown ONLY after the lead is confirmed sent. */
           form.style.display = 'none';
           success.style.display = 'block';
           success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } catch (err) {
+          console.error('[Lead] Submit failed:', err);
+          /* Never tell a customer with a plumbing emergency that we received a
+             message we did not receive. Show the failure and give them the phone. */
+          if (failure) {
+            failure.style.display = 'block';
+            failure.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+          btn.disabled = false;
+          btn.textContent = btnLabel;
         }
       });
     }
@@ -1021,6 +991,16 @@
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     reveals.forEach(el => io.observe(el));
+
+    /* Failsafe: if the observer never fires for an element (scroll quirks, bfcache
+       restore, print, in-page anchor jump), reveal everything after 2.5s so the
+       page can never sit blank. */
+    setTimeout(() => {
+      document.querySelectorAll('.reveal:not(.visible)').forEach(el => el.classList.add('visible'));
+    }, 2500);
+    window.addEventListener('beforeprint', () => {
+      document.documentElement.classList.remove('js-reveal');
+    });
 
     // ── FAQ ACCORDION ──
     document.querySelectorAll('.faq-q').forEach(btn => {
