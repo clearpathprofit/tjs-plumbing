@@ -123,9 +123,23 @@
     }
     .btn-primary:hover { background: var(--accent-hover); transform: scale(1.02); }
     .btn-primary:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+    /* The number IS the button: the digits are the biggest tappable thing on the
+       fold, so nobody has to hunt for them or guess the area code. */
+    .btn-call {
+      display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+      padding: 14px 32px; min-height: 60px;
+      background: var(--accent); color: #fff; border-radius: 980px;
+      text-decoration: none; touch-action: manipulation;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-call:hover { background: #0062c4; transform: translateY(-1px); }
+    .btn-call-icon { display: flex; }
+    .btn-call-text { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.15; }
+    .btn-call-number { font-size: 24px; font-weight: 600; letter-spacing: -0.01em; }
+    .btn-call-sub { font-size: 13px; font-weight: 400; opacity: 0.85; }
     .btn-secondary {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 14px 28px; background: transparent; color: var(--accent);
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      min-height: 48px; padding: 12px 28px; background: transparent; color: var(--accent);
       font-size: 16px; font-weight: 500; border-radius: 980px;
       border: 1.5px solid var(--accent); text-decoration: none;
       transition: background 0.2s, transform 0.15s;
@@ -248,6 +262,11 @@
       position: relative;
       background: var(--off-white);
     }
+    /* Service descriptions are hidden visually but remain in the DOM, so search
+       engines still read them while the grid stays scannable on a phone. */
+    .service-card p { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+    .gallery-slot picture { display: block; width: 100%; height: 100%; }
     .gallery-slot img {
       width: 100%;
       height: 100%;
@@ -480,9 +499,9 @@
     /* ── MOBILE ── */
     @media (max-width: 600px) {
       nav { padding: 0 20px; }
-      .hero-logo { width: 300px; }
       section { padding: 72px 20px; }
-      .services-grid { grid-template-columns: 1fr; }
+      /* With descriptions hidden the cards are title-only, so two fit a phone. */
+      .services-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
       .gallery-grid { grid-template-columns: 1fr; }
       .reviews-grid { grid-template-columns: 1fr; }
       .areas-grid { grid-template-columns: repeat(2, 1fr); }
@@ -526,11 +545,14 @@
     <h1 class="hero-headline">Precision Plumbing.<br>Zero Leaks.</h1>
     <p class="hero-sub">Expert plumbing service for Rochester homes and businesses. Fast, reliable, and done right — every time.</p>
     <div class="hero-actions">
-      <a class="btn-primary" href="tel:5856717465" aria-label="Call TJ's Plumbing now — free quote">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.09 6.09l1.28-1.28a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        Call Now — Free Quote
+      <a class="btn-call" href="tel:5856717465" aria-label="Call TJ&#39;s Plumbing at 585-671-7465">
+        <span class="btn-call-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.09 6.09l1.28-1.28a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></span>
+        <span class="btn-call-text">
+          <span class="btn-call-number">585-671-7465</span>
+          <span class="btn-call-sub">Free quote &middot; We answer</span>
+        </span>
       </a>
-      <a class="btn-secondary" href="#services">See Our Services</a>
+      <a class="btn-secondary" href="sms:5857810451">Prefer to text?</a>
     </div>
     <div class="hero-badges" aria-label="Key credentials">
       <span><span class="dot" aria-hidden="true"></span>Available 24/7</span>
@@ -540,10 +562,6 @@
     </div>
   </section>
 
-  <!-- LOGO SECTION -->
-  <div class="logo-section">
-    <img src="tjs-logo.jpg" alt="TJ's Plumbing" class="hero-logo" />
-  </div>
 
   <!-- SERVICES -->
   <section class="services" id="services" aria-labelledby="services-h">
@@ -675,8 +693,8 @@
   <!-- SERVICE AREAS -->
   <section class="areas" aria-labelledby="areas-h">
     <p class="section-eyebrow reveal">Where We Work</p>
-    <h2 class="section-title reveal" id="areas-h">Serving all of<br>Monroe County.</h2>
-    <p class="section-sub reveal">Rochester and the surrounding communities — if you're nearby, we can be there fast.</p>
+    <h2 class="section-title reveal" id="areas-h">Rochester and<br>everywhere around it.</h2>
+    <p class="section-sub reveal">All of Monroe County plus the surrounding towns. If you're nearby and not on this list, call and ask &mdash; the answer is usually yes.</p>
     <div class="areas-grid reveal">
       <div class="area-chip">Rochester</div>
       <div class="area-chip">Irondequoit</div>
@@ -695,19 +713,35 @@
 
 
   <!-- PHOTO GALLERY -->
-  <!-- 📸 TO ADD PHOTOS: replace each img src="" with the actual image file path or URL -->
-  <!-- Recommended: 6–9 photos, JPG or WebP, ~1200px wide. Show job photos, before/after, team shots -->
   <section class="gallery" id="gallery" aria-labelledby="gallery-h">
     <p class="section-eyebrow reveal">Our Work</p>
     <h2 class="section-title reveal" id="gallery-h">Seen it all.<br>Fixed it all.</h2>
-    <p class="section-sub reveal">Real jobs. Real results. Add photos here to show Rochester what 38 years of craftsmanship looks like.</p>
+    <p class="section-sub reveal">Real jobs in real Rochester-area homes &mdash; a look at what 38 years of craftsmanship gets you.</p>
     <div class="gallery-grid reveal">
-      <div class="gallery-slot" onclick="openLightbox('photo1.jpg')"><img src="photo1.jpg" alt="TJ's Plumbing job photo" class="gallery-img" loading="lazy" /></div>
-      <div class="gallery-slot" onclick="openLightbox('photo2.jpg')"><img src="photo2.jpg" alt="TJ's Plumbing job photo" class="gallery-img" loading="lazy" /></div>
-      <div class="gallery-slot" onclick="openLightbox('photo3.jpg')"><img src="photo3.jpg" alt="TJ's Plumbing job photo" class="gallery-img" loading="lazy" /></div>
-      <div class="gallery-slot" onclick="openLightbox('photo4.jpg')"><img src="photo4.jpg" alt="TJ's Plumbing job photo" class="gallery-img" loading="lazy" /></div>
-      <div class="gallery-slot" onclick="openLightbox('photo5.jpg')"><img src="photo5.jpg" alt="TJ's Plumbing job photo" class="gallery-img" loading="lazy" /></div>
-      <div class="gallery-slot" onclick="openLightbox('photo6.jpg')"><img src="photo6.jpg" alt="TJ's Plumbing job photo" class="gallery-img" loading="lazy" /></div>
+      <div class="gallery-slot" onclick="openLightbox('photo1.jpg')"><picture>
+        <source srcset="photo1.webp" type="image/webp" />
+        <img src="photo1.jpg" alt="TJ&#39;s Plumbing service van at Lowe&#39;s Pro parking in Rochester, NY" class="gallery-img" loading="lazy" decoding="async" width="750" height="1000" />
+      </picture></div>
+      <div class="gallery-slot" onclick="openLightbox('photo2.jpg')"><picture>
+        <source srcset="photo2.webp" type="image/webp" />
+        <img src="photo2.jpg" alt="Navien tankless boiler and copper manifold installation with zone pumps and radiant loops" class="gallery-img" loading="lazy" decoding="async" width="750" height="1000" />
+      </picture></div>
+      <div class="gallery-slot" onclick="openLightbox('photo3.jpg')"><picture>
+        <source srcset="photo3.webp" type="image/webp" />
+        <img src="photo3.jpg" alt="Finished shower with glass sliding door and new toilet, Monroe County NY bathroom" class="gallery-img" loading="lazy" decoding="async" width="750" height="1000" />
+      </picture></div>
+      <div class="gallery-slot" onclick="openLightbox('photo4.jpg')"><picture>
+        <source srcset="photo4.webp" type="image/webp" />
+        <img src="photo4.jpg" alt="Tom Mastrodonato of TJ&#39;s Plumbing sponsoring the Bivona Child Advocacy Center golf tournament" class="gallery-img" loading="lazy" decoding="async" width="750" height="1000" />
+      </picture></div>
+      <div class="gallery-slot" onclick="openLightbox('photo5.jpg')"><picture>
+        <source srcset="photo5.webp" type="image/webp" />
+        <img src="photo5.jpg" alt="Chevron marble tile shower with pebble floor and frameless glass door" class="gallery-img" loading="lazy" decoding="async" width="750" height="1000" />
+      </picture></div>
+      <div class="gallery-slot" onclick="openLightbox('photo6.jpg')"><picture>
+        <source srcset="photo6.webp" type="image/webp" />
+        <img src="photo6.jpg" alt="Freestanding soaking tub with floor-mount filler on hexagon tile" class="gallery-img" loading="lazy" decoding="async" width="750" height="1000" />
+      </picture></div>
     </div>
   </section>
 
