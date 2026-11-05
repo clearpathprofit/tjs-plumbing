@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>document.documentElement.classList.add('js');</script>
   <!-- RENDER PATHS: one HTML file, CSS media queries own layout. Phone (<=600px): one column, nav links hidden, call/text stay. Tablet (601-900px): two columns, nav links hidden. Desktop (>900px): full nav, three-column grids. No JS layout switching. -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -492,15 +493,15 @@
     @keyframes lbIn { from { opacity:0; transform: scale(0.93); } to { opacity:1; transform: scale(1); } }
 
     /* ── SCROLL REVEAL ── */
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .js .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .js .reveal.visible { opacity: 1; transform: translateY(0); }
 
     @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
     /* ── REDUCED MOTION ── */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-      .reveal { opacity: 1; transform: none; }
+      .js .reveal { opacity: 1; transform: none; }
       html { scroll-behavior: auto; }
     }
 
@@ -532,6 +533,15 @@
       footer { flex-direction: column; text-align: center; padding: 28px 20px; }
       .footer-links { justify-content: center; }
     }
+    /* Mobile-only sticky Call / Text bar (hidden above 900px) */
+    .callbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 90; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+      padding: 10px max(12px, env(safe-area-inset-right)) calc(10px + env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+      background: #fff; border-top: 1px solid var(--border); }
+    .callbar a { display: flex; justify-content: center; align-items: center; min-height: 48px; border-radius: 980px; font-size: 16px; font-weight: 600; text-decoration: none; }
+    .callbar .cb-call { background: var(--accent); color: #fff; }
+    .callbar .cb-text { border: 1.5px solid var(--accent); color: var(--accent); }
+    @media (max-width: 900px) { footer { padding-bottom: calc(96px + env(safe-area-inset-bottom)); } }
+    @media (min-width: 901px) { .callbar { display: none; } }
   </style>
 </head>
 <body>
@@ -569,9 +579,9 @@
     <div class="hero-actions">
       <a class="btn-primary" href="tel:5856717465">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.09 6.09l1.28-1.28a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        Call Now — Free Quote
+        Call 585-671-7465
       </a>
-      <a class="btn-secondary" href="#services">See Our Services</a>
+      <a class="btn-secondary" href="sms:5857810451">Text (585) 781-0451</a>
     </div>
     <div class="hero-badges" aria-label="Key credentials">
       <span><span class="dot" aria-hidden="true"></span>Available 24/7</span>
@@ -601,8 +611,6 @@
         <p>Burst pipe at 2am? We're there. Our rapid-response team is on call around the clock to stop damage before it spreads.</p>
         <a class="service-more" href="/emergency-plumber/">Emergency plumbing details &rarr;</a>
       </div>
-
-      <!-- FIXED: was a clock SVG — now uses a correct water-drop/drain icon -->
       <div class="service-card reveal">
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="9" y1="21" x2="15" y2="21"/></svg>
@@ -620,8 +628,6 @@
         <p>Installation, repair, and replacement of traditional and tankless water heaters. Hot water, guaranteed.</p>
         <a class="service-more" href="/water-heater-repair/">Water heaters details &rarr;</a>
       </div>
-
-      <!-- NEW: Sump Pump -->
       <div class="service-card reveal">
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/><line x1="12" y1="15" x2="12" y2="17"/></svg>
@@ -630,8 +636,6 @@
         <p>Rochester winters are brutal. We install, repair, and replace sump pumps so your basement stays dry all year.</p>
         <a class="service-more" href="/sump-pump-service/">Sump pumps details &rarr;</a>
       </div>
-
-      <!-- NEW: Sewer Lines -->
       <div class="service-card reveal">
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="5" rx="1"/><rect x="2" y="16" width="20" height="5" rx="1"/><line x1="7" y1="8" x2="7" y2="16"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="17" y1="8" x2="17" y2="16"/></svg>
@@ -639,8 +643,6 @@
         <h3>Sewer Line Repair</h3>
         <p>Camera inspections, hydro-jetting, and full sewer line replacement. We find the problem without digging up your yard.</p>
       </div>
-
-      <!-- FIXED: was a document/file SVG — now uses a correct wrench/pipe icon -->
       <div class="service-card reveal">
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
@@ -803,7 +805,6 @@
         (585) 781-0451
       </a>
     </div>
-    <!-- FIXED: was inline-flex anchor with margin:0 auto which doesn't self-center — now wrapped in flex container -->
     <div class="cta-actions reveal">
       <a class="btn-light" href="tel:5856717465">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.09 6.09l1.28-1.28a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
@@ -1063,8 +1064,6 @@
 
 
   <script>
-    // ── GoHighLevel Webhook Integration ──────────────────────────────
-    // STEP 1: Paste your GHL webhook URL here (from Automation > Webhook trigger)
     // ── SCROLL REVEAL ──
     const reveals = document.querySelectorAll('.reveal');
     const io = new IntersectionObserver((entries) => {
@@ -1125,6 +1124,11 @@
     data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
     data-widget-id="69d44b380515dd6dcf894738">
   </script>
+
+  <div class="callbar" aria-label="Contact TJ's Plumbing">
+    <a class="cb-call" href="tel:5856717465">Call</a>
+    <a class="cb-text" href="sms:5857810451">Text</a>
+  </div>
 
   <!-- LIGHTBOX -->
   <div id="lightbox" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:9999;align-items:center;justify-content:center;" onclick="closeLightbox()">
