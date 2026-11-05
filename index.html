@@ -2,23 +2,66 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="TJ's Plumbing — Rochester NY's trusted local plumber. Emergency repairs, drain cleaning, water heaters, sewer lines & more. Licensed & insured. Call 585-671-7465." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="TJ's Plumbing: Penfield and Rochester plumber, 24/7. Emergency repairs, drain cleaning, water heaters and sump pumps. Licensed master plumber. 585-671-7465." />
   <meta name="robots" content="index, follow" />
   <meta property="og:title" content="TJ's Plumbing — Rochester, NY" />
   <meta property="og:description" content="Rochester's trusted local plumber. 24/7 emergency service. Licensed & insured. Free quotes. Call 585-671-7465." />
-  <meta property="og:url" content="https://tjsplumbingny.com" />
+  <meta property="og:url" content="https://tjsplumbingny.com/" />
+  <meta property="og:image" content="https://tjsplumbingny.com/photo1.jpg" />
   <meta property="og:type" content="website" />
-  <link rel="canonical" href="https://tjsplumbingny.com" />
+  <link rel="canonical" href="https://tjsplumbingny.com/" />
   <meta property="og:locale" content="en_US" />
-  <title>TJ's Plumbing | Rochester, NY | tjsplumbingny.com</title>
+  <script>
+    /* Reveal animation opt-in. If this script is blocked or IntersectionObserver is
+       missing, html.js-reveal is never set and all content stays visible. */
+    try { if ('IntersectionObserver' in window) { document.documentElement.className += ' js-reveal'; } } catch (e) {}
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Plumber",
+    "@id": "https://tjsplumbingny.com/#business",
+    "name": "TJ's Plumbing",
+    "url": "https://tjsplumbingny.com/",
+    "logo": "https://tjsplumbingny.com/tjs-logo.jpg",
+    "image": "https://tjsplumbingny.com/photo1.jpg",
+    "telephone": "+1-585-671-7465",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "32 Corral Dr",
+      "addressLocality": "Penfield",
+      "addressRegion": "NY",
+      "postalCode": "14526",
+      "addressCountry": "US"
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    },
+    "areaServed": ["Rochester, NY","Irondequoit, NY","Greece, NY","Pittsford, NY","Henrietta, NY","Brighton, NY","Webster, NY","Penfield, NY","Gates, NY","Chili, NY","Victor, NY","Fairport, NY"],
+    "makesOffer": [
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Emergency plumbing repair","url":"https://tjsplumbingny.com/emergency-plumber/"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Water heater repair and replacement","url":"https://tjsplumbingny.com/water-heater-repair/"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Sump pump service","url":"https://tjsplumbingny.com/sump-pump-service/"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Drain cleaning","url":"https://tjsplumbingny.com/drain-cleaning/"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Sewer line repair"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Pipe replacement"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Fixture installation"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Leak detection"}}
+    ]
+  }
+  </script>
+  <title>TJ's Plumbing | Plumber in Penfield &amp; Rochester, NY | 24/7</title>
   <style>
     :root {
       --white: #ffffff;
       --off-white: #f5f5f7;
       --charcoal: #1d1d1f;
       --mid: #6e6e73;
-      --light: #a1a1a6;
+      --light: #626267;
       --accent: #0071e3;
       --accent-hover: #0077ed;
       --green: #34c759;
@@ -63,7 +106,7 @@
       -webkit-backdrop-filter: saturate(180%) blur(20px);
       border-bottom: 1px solid rgba(0,0,0,0.08);
     }
-    .nav-logo { font-size: 17px; font-weight: 600; letter-spacing: -0.3px; color: var(--charcoal); text-decoration: none; }
+    .nav-logo { font-size: 16px; font-weight: 600; letter-spacing: -0.3px; color: var(--charcoal); text-decoration: none; }
     .nav-right { display: flex; align-items: center; gap: 20px; }
     .nav-link { font-size: 14px; color: var(--mid); text-decoration: none; transition: color 0.2s; }
     .nav-link:hover { color: var(--charcoal); }
@@ -84,7 +127,7 @@
     }
     .hero::before {
       content: ''; position: absolute; top: -200px; left: 50%;
-      transform: translateX(-50%); width: 900px; height: 900px;
+      transform: translateX(-50%); width: 240vw; max-width: 900px; height: 900px;
       background: radial-gradient(ellipse at center, rgba(0,113,227,0.07) 0%, transparent 70%);
       pointer-events: none; z-index: 0;
     }
@@ -100,7 +143,7 @@
       opacity: 0; transform: translateY(24px); animation: fadeUp 0.75s ease 0.2s forwards;
     }
     .hero-sub {
-      font-size: clamp(17px, 2.2vw, 21px); font-weight: 400; color: var(--mid);
+      font-size: clamp(16px, 2.2vw, 21px); font-weight: 400; color: var(--mid);
       line-height: 1.5; max-width: 480px; margin-bottom: 40px;
       opacity: 0; transform: translateY(24px); animation: fadeUp 0.75s ease 0.35s forwards;
     }
@@ -118,9 +161,23 @@
     }
     .btn-primary:hover { background: var(--accent-hover); transform: scale(1.02); }
     .btn-primary:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+    /* The number IS the button: the digits are the biggest tappable thing on the
+       fold, so nobody has to hunt for them or guess the area code. */
+    .btn-call {
+      display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+      padding: 14px 32px; min-height: 60px;
+      background: var(--accent); color: #fff; border-radius: 980px;
+      text-decoration: none; touch-action: manipulation;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-call:hover { background: #0062c4; transform: translateY(-1px); }
+    .btn-call-icon { display: flex; }
+    .btn-call-text { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.15; }
+    .btn-call-number { font-size: 28px; font-weight: 600; letter-spacing: -0.01em; }
+    .btn-call-sub { font-size: 13px; font-weight: 400; opacity: 0.85; }
     .btn-secondary {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 14px 28px; background: transparent; color: var(--accent);
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      min-height: 48px; padding: 12px 28px; background: transparent; color: var(--accent);
       font-size: 16px; font-weight: 500; border-radius: 980px;
       border: 1.5px solid var(--accent); text-decoration: none;
       transition: background 0.2s, transform 0.15s;
@@ -137,13 +194,13 @@
 
     /* ── SECTION SHARED ── */
     section { padding: 100px 24px; }
-    .section-eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); text-align: center; margin-bottom: 14px; }
+    .section-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); text-align: center; margin-bottom: 14px; }
     .section-title { font-size: clamp(32px, 4.5vw, 52px); font-weight: 700; letter-spacing: -0.03em; text-align: center; color: var(--charcoal); line-height: 1.1; margin-bottom: 16px; }
-    .section-sub { font-size: 17px; color: var(--mid); text-align: center; max-width: 520px; margin: 0 auto 60px; line-height: 1.55; }
+    .section-sub { font-size: 16px; color: var(--mid); text-align: center; max-width: 520px; margin: 0 auto 60px; line-height: 1.55; }
 
     /* ── LOGO SECTION ── */
     .logo-section { background:#fff; text-align:center; padding:0 24px 60px; }
-    .hero-logo { width:420px; max-width:85vw; height:auto; display:inline-block; }
+    .hero-logo { width: min(420px, 85vw); height:auto; display:inline-block; }
 
     /* ── SERVICES ── */
     .services { background: var(--off-white); }
@@ -163,7 +220,7 @@
       margin-bottom: 20px;
     }
     .service-icon svg { width: 26px; height: 26px; color: var(--accent); }
-    .service-card h3 { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 8px; color: var(--charcoal); }
+    .service-card h3 { font-size: 16px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 8px; color: var(--charcoal); }
     .service-card p { font-size: 14px; color: var(--mid); line-height: 1.6; }
 
     /* ── ABOUT ── */
@@ -193,9 +250,9 @@
     }
     .trust-item { background: var(--white); padding: 48px 36px; text-align: center; transition: background 0.2s; }
     .trust-item:hover { background: rgba(0,113,227,0.03); }
-    .trust-num { font-size: 48px; font-weight: 700; letter-spacing: -0.04em; color: var(--charcoal); line-height: 1; margin-bottom: 8px; }
+    .trust-num { font-size: 44px; font-weight: 700; letter-spacing: -0.04em; color: var(--charcoal); line-height: 1; margin-bottom: 8px; }
     .trust-num em { color: var(--accent); font-style: normal; }
-    .trust-label { font-size: 15px; font-weight: 600; color: var(--charcoal); margin-bottom: 6px; }
+    .trust-label { font-size: 16px; font-weight: 600; color: var(--charcoal); margin-bottom: 6px; }
     .trust-desc { font-size: 13px; color: var(--mid); line-height: 1.55; }
 
     /* ── REVIEWS ── */
@@ -207,10 +264,10 @@
       display: flex; flex-direction: column; gap: 14px;
     }
     .stars { display: flex; gap: 3px; }
-    .star { color: #ff9f0a; font-size: 15px; }
+    .star { color: #ff9f0a; font-size: 16px; }
     .review-text { font-size: 14px; color: var(--charcoal); line-height: 1.65; flex: 1; }
     .review-name { font-size: 13px; font-weight: 600; color: var(--charcoal); }
-    .review-location { font-size: 12px; color: var(--light); margin-top: 2px; }
+    .review-location { font-size: 13px; color: var(--light); margin-top: 2px; }
     .reviews-source { text-align: center; margin-top: 28px; font-size: 13px; color: var(--light); }
     .reviews-source strong { color: var(--mid); }
 
@@ -243,6 +300,11 @@
       position: relative;
       background: var(--off-white);
     }
+    /* Service descriptions are hidden visually but remain in the DOM, so search
+       engines still read them while the grid stays scannable on a phone. */
+    .service-card p { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+    .gallery-slot picture { display: block; width: 100%; height: 100%; }
     .gallery-slot img {
       width: 100%;
       height: 100%;
@@ -264,7 +326,7 @@
     .faq-q {
       width: 100%; background: var(--white); border: none;
       padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; gap: 16px;
-      font-size: 15px; font-weight: 600; color: var(--charcoal);
+      font-size: 16px; font-weight: 600; color: var(--charcoal);
       cursor: pointer; text-align: left; transition: background 0.15s; font-family: var(--font);
     }
     .faq-q:hover, .faq-q[aria-expanded="true"] { background: var(--off-white); }
@@ -296,12 +358,12 @@
     .cta-phones { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-bottom: 32px; }
     .phone-sms { font-size: clamp(28px, 4.5vw, 52px); color: rgba(255,255,255,0.6); }
     .phone-sms:hover { color: var(--accent); }
-    .phone-label { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.5; margin-bottom: 2px; }
+    .phone-label { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.5; margin-bottom: 2px; }
     .cta-actions { display: flex; justify-content: center; margin-bottom: 24px; }
     .btn-light {
       display: inline-flex; align-items: center; gap: 8px;
       padding: 16px 36px; background: var(--white); color: var(--charcoal);
-      font-size: 17px; font-weight: 500; border-radius: 980px; text-decoration: none;
+      font-size: 16px; font-weight: 500; border-radius: 980px; text-decoration: none;
       transition: background 0.2s, transform 0.15s;
     }
     .btn-light:hover { background: var(--off-white); transform: scale(1.02); }
@@ -319,7 +381,7 @@
     .form-field select {
       padding: 13px 16px; background: var(--white);
       border: 1.5px solid var(--border); border-radius: var(--radius-sm);
-      font-size: 15px; color: var(--charcoal); font-family: var(--font);
+      font-size: 16px; color: var(--charcoal); font-family: var(--font);
       outline: none; transition: border-color 0.2s, box-shadow 0.2s; -webkit-appearance: none;
     }
     .form-field input:focus,
@@ -328,19 +390,19 @@
     .form-field textarea { resize: vertical; min-height: 110px; }
     .form-submit { display: flex; justify-content: center; margin-top: 20px; }
     .form-submit .btn-primary { border: none; cursor: pointer; font-family: var(--font); font-size: 16px; padding: 14px 36px; }
-    .form-note { font-size: 12px; color: var(--light); text-align: center; margin-top: 14px; }
+    .form-note { font-size: 13px; color: var(--light); text-align: center; margin-top: 14px; }
 
     /* ── FOOTER ── */
     footer {
       background: #000; color: rgba(255,255,255,0.45);
       padding: 36px 40px; display: flex; align-items: center;
-      justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 12px;
+      justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 13px;
     }
     footer a { color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
     footer a:hover { color: var(--white); }
     .footer-brand { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.8); display: block; margin-bottom: 4px; }
     .footer-brand-block { display: flex; flex-direction: column; gap: 3px; }
-    .footer-addr { font-size: 12px; color: rgba(255,255,255,0.4); text-decoration: none; }
+    .footer-addr { font-size: 13px; color: rgba(255,255,255,0.4); text-decoration: none; }
     .footer-addr:hover { color: rgba(255,255,255,0.7); }
     .footer-links { display: flex; gap: 20px; }
 
@@ -367,7 +429,7 @@
       padding: 48px 40px;
       position: relative;
     }
-    .modal-box h2 { font-size: 24px; font-weight: 700; margin-bottom: 8px; color: var(--charcoal); letter-spacing: -0.02em; }
+    .modal-box h2 { font-size: 28px; font-weight: 700; margin-bottom: 8px; color: var(--charcoal); letter-spacing: -0.02em; }
     .modal-box .modal-date { font-size: 13px; color: var(--light); margin-bottom: 28px; }
     .modal-box h3 { font-size: 16px; font-weight: 600; margin: 24px 0 8px; color: var(--charcoal); }
     .modal-box p, .modal-box li { font-size: 14px; color: var(--mid); line-height: 1.7; margin-bottom: 8px; }
@@ -379,7 +441,7 @@
       border: none; border-radius: 50%;
       width: 32px; height: 32px;
       cursor: pointer;
-      font-size: 18px;
+      font-size: 16px;
       color: var(--mid);
       display: flex; align-items: center; justify-content: center;
       transition: background 0.2s;
@@ -389,7 +451,7 @@
     .footer-legal button {
       background: none; border: none;
       color: rgba(255,255,255,0.45);
-      font-size: 12px; cursor: pointer;
+      font-size: 13px; cursor: pointer;
       font-family: var(--font);
       transition: color 0.2s;
       padding: 0;
@@ -427,7 +489,7 @@
       border: 2px solid rgba(255,255,255,0.4);
       border-radius: 50%;
       color: #fff;
-      font-size: 26px;
+      font-size: 28px;
       font-weight: 300;
       cursor: pointer;
       display: flex;
@@ -442,15 +504,19 @@
     @keyframes lbIn { from { opacity:0; transform: scale(0.93); } to { opacity:1; transform: scale(1); } }
 
     /* ── SCROLL REVEAL ── */
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+    /* Content is VISIBLE by default. The hide-then-reveal effect applies only once JS
+       has confirmed it is running (html.js-reveal). If JS fails, is blocked, or errors
+       before this point, the page renders normally instead of going blank. */
+    .reveal { opacity: 1; transform: none; transition: opacity 0.7s ease, transform 0.7s ease; }
+    html.js-reveal .reveal { opacity: 0; transform: translateY(28px); }
+    html.js-reveal .reveal.visible { opacity: 1; transform: translateY(0); }
 
     @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
     /* ── REDUCED MOTION ── */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-      .reveal { opacity: 1; transform: none; }
+      .reveal, html.js-reveal .reveal { opacity: 1 !important; transform: none !important; }
       html { scroll-behavior: auto; }
     }
 
@@ -471,9 +537,9 @@
     /* ── MOBILE ── */
     @media (max-width: 600px) {
       nav { padding: 0 20px; }
-      .hero-logo { width: 300px; }
       section { padding: 72px 20px; }
-      .services-grid { grid-template-columns: 1fr; }
+      /* With descriptions hidden the cards are title-only, so two fit a phone. */
+      .services-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
       .gallery-grid { grid-template-columns: 1fr; }
       .reviews-grid { grid-template-columns: 1fr; }
       .areas-grid { grid-template-columns: repeat(2, 1fr); }
@@ -482,6 +548,16 @@
       footer { flex-direction: column; text-align: center; padding: 28px 20px; }
       .footer-links { justify-content: center; }
     }
+    .service-more { display: inline-flex; align-items: center; min-height: 44px; margin-top: 4px; font-size: 14px; font-weight: 600; color: var(--accent); text-decoration: none; touch-action: manipulation; }
+    .footer-services { display: flex; flex-wrap: wrap; gap: 0 16px; }
+    .footer-services a { display: inline-flex; align-items: center; min-height: 44px; touch-action: manipulation; }
+    a, button, select, input, textarea, .gallery-slot { touch-action: manipulation; }
+    .section-eyebrow, .hero-eyebrow { color: #0060c0; }
+    .cta-band .section-eyebrow, .cta-note, .phone-label { color: rgba(255,255,255,0.75) !important; opacity: 1 !important; }
+    footer, footer a, footer span, .footer-addr, .footer-legal a { color: rgba(255,255,255,0.75) !important; }
+    .skip-link, .nav-logo, .nav-cta, .footer-links a { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; }
+    nav { padding-left: max(40px, env(safe-area-inset-left)); padding-right: max(40px, env(safe-area-inset-right)); padding-top: env(safe-area-inset-top); height: calc(52px + env(safe-area-inset-top)); }
+    @media (max-width: 600px) { nav { padding-left: max(20px, env(safe-area-inset-left)); padding-right: max(20px, env(safe-area-inset-right)); } }
   </style>
 </head>
 <body>
@@ -513,15 +589,18 @@
 
   <!-- HERO -->
   <section class="hero" aria-label="Hero">
-    <p class="hero-eyebrow">Rochester's Trusted Plumbers</p>
+    <p class="hero-eyebrow">Plumber in Penfield &amp; Rochester, NY</p>
     <h1 class="hero-headline">Precision Plumbing.<br>Zero Leaks.</h1>
-    <p class="hero-sub">Expert plumbing service for Rochester homes and businesses. Fast, reliable, and done right — every time.</p>
+    <p class="hero-sub">Licensed master plumber based in Penfield, serving Rochester and the towns around it. Emergency repairs, drain cleaning, water heaters and sump pumps.</p>
     <div class="hero-actions">
-      <a class="btn-primary" href="tel:5856717465" aria-label="Call TJ's Plumbing now — free quote">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.09 6.09l1.28-1.28a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        Call Now — Free Quote
+      <a class="btn-call" href="tel:5856717465">
+        <span class="btn-call-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.09 6.09l1.28-1.28a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></span>
+        <span class="btn-call-text">
+          <span class="btn-call-number">585-671-7465</span>
+          <span class="btn-call-sub">Free quote &middot; We answer</span>
+        </span>
       </a>
-      <a class="btn-secondary" href="#services">See Our Services</a>
+      <a class="btn-secondary" href="sms:5857810451">Prefer to text?</a>
     </div>
     <div class="hero-badges" aria-label="Key credentials">
       <span><span class="dot" aria-hidden="true"></span>Available 24/7</span>
@@ -531,10 +610,6 @@
     </div>
   </section>
 
-  <!-- LOGO SECTION -->
-  <div class="logo-section">
-    <img src="tjs-logo.jpg" alt="TJ's Plumbing" class="hero-logo" />
-  </div>
 
   <!-- SERVICES -->
   <section class="services" id="services" aria-labelledby="services-h">
@@ -549,6 +624,7 @@
         </div>
         <h3>Emergency Repairs</h3>
         <p>Burst pipe at 2am? We're there. Our rapid-response team is on call around the clock to stop damage before it spreads.</p>
+        <a class="service-more" href="/emergency-plumber/">Emergency plumbing details &rarr;</a>
       </div>
 
       <!-- FIXED: was a clock SVG — now uses a correct water-drop/drain icon -->
@@ -558,6 +634,7 @@
         </div>
         <h3>Drain Cleaning</h3>
         <p>Slow drains and stubborn clogs cleared fast using professional-grade equipment — no mess, no hassle, no callbacks.</p>
+        <a class="service-more" href="/drain-cleaning/">Drain cleaning details &rarr;</a>
       </div>
 
       <div class="service-card reveal">
@@ -566,6 +643,7 @@
         </div>
         <h3>Water Heaters</h3>
         <p>Installation, repair, and replacement of traditional and tankless water heaters. Hot water, guaranteed.</p>
+        <a class="service-more" href="/water-heater-repair/">Water heaters details &rarr;</a>
       </div>
 
       <!-- NEW: Sump Pump -->
@@ -575,6 +653,7 @@
         </div>
         <h3>Sump Pump Service</h3>
         <p>Rochester winters are brutal. We install, repair, and replace sump pumps so your basement stays dry all year.</p>
+        <a class="service-more" href="/sump-pump-service/">Sump pumps details &rarr;</a>
       </div>
 
       <!-- NEW: Sewer Lines -->
@@ -615,7 +694,7 @@
   </section>
 
   <!-- WHY TJ'S -->
-  <section class="why" aria-labelledby="why-h">
+  <section class="why" id="about" aria-labelledby="why-h">
     <p class="section-eyebrow reveal">By the Numbers</p>
     <h2 class="section-title reveal" id="why-h">Built on trust.<br>Proven in Rochester.</h2>
     <p class="section-sub reveal">38 years of showing up on time, doing the job right, and treating customers like neighbors.</p>
@@ -645,17 +724,17 @@
     <p class="section-sub reveal">Don't take our word for it — here's what our neighbors have to say.</p>
     <div class="reviews-grid">
       <div class="review-card reveal">
-        <div class="stars" aria-label="5 out of 5 stars"><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span></div>
+        <div class="stars" role="img" aria-label="5 out of 5 stars"><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span></div>
         <p class="review-text">"TJ showed up within an hour of my call — on a Sunday night. Fixed the burst pipe fast and the price was totally fair. I won't call anyone else."</p>
         <div><div class="review-name">Mike D.</div><div class="review-location">Irondequoit, NY</div></div>
       </div>
       <div class="review-card reveal">
-        <div class="stars" aria-label="5 out of 5 stars"><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span></div>
+        <div class="stars" role="img" aria-label="5 out of 5 stars"><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span></div>
         <p class="review-text">"Had TJ replace our water heater and repipe the basement. Clean, professional, on time, and he explained everything before starting. Highly recommend."</p>
         <div><div class="review-name">Sarah L.</div><div class="review-location">Pittsford, NY</div></div>
       </div>
       <div class="review-card reveal">
-        <div class="stars" aria-label="5 out of 5 stars"><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span></div>
+        <div class="stars" role="img" aria-label="5 out of 5 stars"><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span></div>
         <p class="review-text">"Called three plumbers. TJ was the only one who picked up. He was at our house in 45 minutes and had our drain cleared in under an hour. Incredible."</p>
         <div><div class="review-name">James R.</div><div class="review-location">Greece, NY</div></div>
       </div>
@@ -666,8 +745,8 @@
   <!-- SERVICE AREAS -->
   <section class="areas" aria-labelledby="areas-h">
     <p class="section-eyebrow reveal">Where We Work</p>
-    <h2 class="section-title reveal" id="areas-h">Serving all of<br>Monroe County.</h2>
-    <p class="section-sub reveal">Rochester and the surrounding communities — if you're nearby, we can be there fast.</p>
+    <h2 class="section-title reveal" id="areas-h">Rochester and<br>everywhere around it.</h2>
+    <p class="section-sub reveal">All of Monroe County plus the surrounding towns. If you're nearby and not on this list, call and ask &mdash; the answer is usually yes.</p>
     <div class="areas-grid reveal">
       <div class="area-chip">Rochester</div>
       <div class="area-chip">Irondequoit</div>
@@ -686,19 +765,35 @@
 
 
   <!-- PHOTO GALLERY -->
-  <!-- 📸 TO ADD PHOTOS: replace each img src="" with the actual image file path or URL -->
-  <!-- Recommended: 6–9 photos, JPG or WebP, ~1200px wide. Show job photos, before/after, team shots -->
   <section class="gallery" id="gallery" aria-labelledby="gallery-h">
     <p class="section-eyebrow reveal">Our Work</p>
     <h2 class="section-title reveal" id="gallery-h">Seen it all.<br>Fixed it all.</h2>
-    <p class="section-sub reveal">Real jobs. Real results. Add photos here to show Rochester what 38 years of craftsmanship looks like.</p>
+    <p class="section-sub reveal">Real jobs in real Rochester-area homes &mdash; a look at what 38 years of craftsmanship gets you.</p>
     <div class="gallery-grid reveal">
-      <div class="gallery-slot" onclick="openLightbox('photo1.jpg')"><img src="photo1.jpg" alt="TJ's Plumbing job photo" class="gallery-img" loading="lazy" /></div>
-      <div class="gallery-slot" onclick="openLightbox('photo2.jpg')"><img src="photo2.jpg" alt="TJ's Plumbing job photo" class="gallery-img" loading="lazy" /></div>
-      <div class="gallery-slot" onclick="openLightbox('photo3.jpg')"><img src="photo3.jpg" alt="TJ's Plumbing job photo" class="gallery-img" loading="lazy" /></div>
-      <div class="gallery-slot" onclick="openLightbox('photo4.jpg')"><img src="photo4.jpg" alt="TJ's Plumbing job photo" class="gallery-img" loading="lazy" /></div>
-      <div class="gallery-slot" onclick="openLightbox('photo5.jpg')"><img src="photo5.jpg" alt="TJ's Plumbing job photo" class="gallery-img" loading="lazy" /></div>
-      <div class="gallery-slot" onclick="openLightbox('photo6.jpg')"><img src="photo6.jpg" alt="TJ's Plumbing job photo" class="gallery-img" loading="lazy" /></div>
+      <div class="gallery-slot" onclick="openLightbox('photo1.jpg')"><picture>
+        <source srcset="photo1.webp" type="image/webp" />
+        <img src="photo1.jpg" alt="TJ&#39;s Plumbing service van at Lowe&#39;s Pro parking in Rochester, NY" class="gallery-img" loading="lazy" decoding="async" width="750" height="1000" />
+      </picture></div>
+      <div class="gallery-slot" onclick="openLightbox('photo2.jpg')"><picture>
+        <source srcset="photo2.webp" type="image/webp" />
+        <img src="photo2.jpg" alt="Navien tankless boiler and copper manifold installation with zone pumps and radiant loops" class="gallery-img" loading="lazy" decoding="async" width="750" height="1000" />
+      </picture></div>
+      <div class="gallery-slot" onclick="openLightbox('photo3.jpg')"><picture>
+        <source srcset="photo3.webp" type="image/webp" />
+        <img src="photo3.jpg" alt="Finished shower with glass sliding door and new toilet, Monroe County NY bathroom" class="gallery-img" loading="lazy" decoding="async" width="750" height="1000" />
+      </picture></div>
+      <div class="gallery-slot" onclick="openLightbox('photo4.jpg')"><picture>
+        <source srcset="photo4.webp" type="image/webp" />
+        <img src="photo4.jpg" alt="Tom Mastrodonato of TJ&#39;s Plumbing sponsoring the Bivona Child Advocacy Center golf tournament" class="gallery-img" loading="lazy" decoding="async" width="750" height="1000" />
+      </picture></div>
+      <div class="gallery-slot" onclick="openLightbox('photo5.jpg')"><picture>
+        <source srcset="photo5.webp" type="image/webp" />
+        <img src="photo5.jpg" alt="Chevron marble tile shower with pebble floor and frameless glass door" class="gallery-img" loading="lazy" decoding="async" width="750" height="1000" />
+      </picture></div>
+      <div class="gallery-slot" onclick="openLightbox('photo6.jpg')"><picture>
+        <source srcset="photo6.webp" type="image/webp" />
+        <img src="photo6.jpg" alt="Freestanding soaking tub with floor-mount filler on hexagon tile" class="gallery-img" loading="lazy" decoding="async" width="750" height="1000" />
+      </picture></div>
     </div>
   </section>
 
@@ -737,14 +832,14 @@
     <h2 class="section-title reveal" id="cta-h">Ready to fix it?</h2>
     <p class="section-sub reveal">Call for a free quote. Most jobs scheduled same day or next morning.</p>
     <div class="reveal cta-phones">
-      <a class="phone-display" href="tel:5856717465" aria-label="Call TJ's Plumbing at 585-671-7465">
+      <a class="phone-display" href="tel:5856717465">
         <span class="phone-label">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.09 6.09l1.28-1.28a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
           Call
         </span>
         585-671-7465
       </a>
-      <a class="phone-display phone-sms" href="sms:5857810451" aria-label="Text TJ's Plumbing at 585-781-0451">
+      <a class="phone-display phone-sms" href="sms:5857810451">
         <span class="phone-label">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
           Text
@@ -772,8 +867,16 @@
       <!-- SUCCESS STATE -->
       <div id="form-success" style="display:none; text-align:center; padding:48px 20px;">
         <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#34c759" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 16px;display:block" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-        <h3 style="font-size:20px;font-weight:600;margin-bottom:8px;color:var(--charcoal)">Message received!</h3>
-        <p style="font-size:15px;color:var(--mid);line-height:1.6">TJ will be in touch within a few hours.<br>For anything urgent call <a href="tel:5856717465" style="color:var(--accent);font-weight:500">585-671-7465</a>.</p>
+        <h3 style="font-size:24px;font-weight:600;margin-bottom:8px;color:var(--charcoal)">Message received!</h3>
+        <p style="font-size: 16px;color:var(--mid);line-height:1.6">TJ will be in touch within a few hours.<br>For anything urgent call <a href="tel:5856717465" style="color:var(--accent);font-weight:500">585-671-7465</a>.</p>
+      </div>
+
+      <!-- FAILURE STATE — shown only when the lead did NOT send -->
+      <div id="form-error" role="alert" style="display:none; text-align:center; padding:32px 20px; margin-bottom:8px; background:#FFF4F4; border:1.5px solid #F5C2C2; border-radius:var(--radius-sm);">
+        <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#C62828" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 14px;display:block" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="16.5" x2="12.01" y2="16.5"/></svg>
+        <h3 style="font-size:24px;font-weight:600;margin-bottom:8px;color:var(--charcoal)">That didn&#39;t go through</h3>
+        <p style="font-size: 16px;color:var(--mid);line-height:1.6;margin-bottom:18px">Your message was not sent, so please don&#39;t wait on a reply. Call or text us directly and we&#39;ll take care of you.</p>
+        <a href="tel:5856717465" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 24px;border-radius:999px;background:var(--accent);color:#fff;font-size:16px;font-weight:600;text-decoration:none;touch-action:manipulation;">Call 585-671-7465</a>
       </div>
 
       <form id="ghl-form" aria-label="Contact form" novalidate>
@@ -788,7 +891,7 @@
           </div>
           <div class="form-field">
             <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="585-555-0100" />
+            <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="585-555-0100" required />
           </div>
           <div class="form-field">
             <label for="email">Email Address</label>
@@ -815,10 +918,12 @@
           </div>
         </div>
         <div style="display:flex; flex-direction:row; align-items:flex-start; gap:12px; margin-top:10px; padding:16px; background:var(--off-white); border-radius:var(--radius-sm); border:1.5px solid var(--border);">
-          <input type="checkbox" id="sms-consent" name="sms_consent" required
+          <!-- A2P 10DLC: consent is OPTIONAL and unchecked by default. It must never be
+               required, and the form must submit without it. -->
+          <input type="checkbox" id="sms-consent" name="sms_consent"
                  style="margin-top:2px; width:20px; height:20px; flex-shrink:0; accent-color:var(--accent); cursor:pointer;" />
-          <label for="sms-consent" style="font-size:13px; color:var(--mid); line-height:1.55; font-weight:400; cursor:pointer;">
-            By checking this box, I agree to receive SMS text messages from TJ&#39;s Plumbing regarding my service inquiry, appointment updates, and follow-ups. Message &amp; data rates may apply. Reply STOP to opt out at any time. View our <button type="button" onclick="document.getElementById('privacy-modal').classList.add('open')" style="background:none;border:none;color:var(--accent);cursor:pointer;font-size:13px;padding:0;font-family:var(--font);text-decoration:underline;">Privacy Policy</button>.
+          <label for="sms-consent" style="font-size:14px; color:var(--mid); line-height:1.55; font-weight:400; cursor:pointer;">
+            <strong style="font-weight:600;color:var(--charcoal)">Optional:</strong> I agree to receive SMS messages from TJ&#39;s Plumbing about my inquiry and appointments. Message frequency varies, 2&ndash;6 per inquiry. Message &amp; data rates may apply. Reply HELP for help, STOP to opt out. Not a condition of purchase. See our <a href="/privacy" style="color:#0060c0;text-decoration:underline;display:inline-flex;align-items:center;min-height:44px;">Privacy Policy</a> and <a href="/terms" style="color:#0060c0;text-decoration:underline;display:inline-flex;align-items:center;min-height:44px;">Terms of Service</a>.
           </label>
         </div>
         <div class="form-submit">
@@ -836,95 +941,42 @@
     <div class="footer-brand-block">
       <span class="footer-brand">TJ's Plumbing</span>
       <span class="footer-addr">32 Corral Dr, Penfield, NY 14526</span>
-      <a href="/cdn-cgi/l/email-protection#eebac0838f9d9a9c81dcdcae978f868181c08d8183" class="footer-addr"><span class="__cf_email__" data-cfemail="64304a09051710160b5656241d050c0b0b4a070b09">[email&#160;protected]</span></a>
+      <a href="mailto:T.mastro22@yahoo.com" class="footer-addr" style="display:inline-flex;align-items:center;min-height:44px">T.mastro22@yahoo.com</a>
     </div>
     <div class="footer-links">
-      <a href="tel:5856717465" aria-label="Call TJ's Plumbing">📞 585-671-7465</a>
-      <a href="sms:5857810451" aria-label="Text TJ's Plumbing">💬 (585) 781-0451</a>
+      <a href="tel:5856717465">📞 585-671-7465</a>
+      <a href="sms:5857810451">💬 Text (585) 781-0451</a>
       <a href="#services">Services</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </div>
-    <!-- FIXED: year was 2025, corrected to 2026 -->
+    <div class="footer-services" role="navigation" aria-label="Plumbing services">
+      <a href="/emergency-plumber/">Emergency Plumber</a>
+      <a href="/water-heater-repair/">Water Heaters</a>
+      <a href="/sump-pump-service/">Sump Pumps</a>
+      <a href="/drain-cleaning/">Drain Cleaning</a>
+      <a href="/plumber-penfield-ny/">Plumber in Penfield</a>
+    </div>
     <span>© 2026 TJ's Plumbing. All rights reserved. &nbsp;·&nbsp; tjsplumbingny.com</span>
     <div class="footer-legal">
-      <button onclick="document.getElementById('privacy-modal').classList.add('open')" aria-label="Privacy Policy">Privacy Policy</button>
-      <button onclick="document.getElementById('terms-modal').classList.add('open')" aria-label="Terms of Service">Terms of Service</button>
-    </div>
+        <a href="/privacy" style="display:inline-flex;align-items:center;min-height:44px;padding:0 4px;touch-action:manipulation;">Privacy Policy</a>
+        <a href="/terms" style="display:inline-flex;align-items:center;min-height:44px;padding:0 4px;touch-action:manipulation;">Terms of Service</a>
+      </div>
   </footer>
 
 
-  <!-- PRIVACY POLICY MODAL -->
-  <div class="modal-overlay" id="privacy-modal" role="dialog" aria-modal="true" aria-labelledby="privacy-title"
-       onclick="if(event.target===this)this.classList.remove('open')">
-    <div class="modal-box">
-      <button class="modal-close" onclick="document.getElementById('privacy-modal').classList.remove('open')" aria-label="Close">&#x2715;</button>
-      <h2 id="privacy-title">Privacy Policy</h2>
-      <p class="modal-date">Effective Date: January 1, 2026</p>
+  
 
-      <h3>Information We Collect</h3>
-      <p>When you submit a contact form on tjsplumbingny.com, we collect your name, phone number, email address, and any details you provide about your plumbing needs.</p>
+  
 
-      <h3>How We Use Your Information</h3>
-      <ul>
-        <li>To respond to your service inquiry</li>
-        <li>To schedule and confirm appointments</li>
-        <li>To send service-related text messages and follow-ups</li>
-        <li>To request a Google review after a completed job</li>
-      </ul>
-
-      <h3>SMS Communications</h3>
-      <p>By submitting your phone number, you consent to receive SMS messages from TJ's Plumbing regarding your service inquiry, appointment confirmations, and follow-ups. Message and data rates may apply. Reply STOP at any time to opt out.</p>
-
-      <h3>Data Sharing</h3>
-      <p>We do not sell, trade, or share your personal information with third parties except as required to provide our services or comply with the law.</p>
-
-      <h3>Data Retention</h3>
-      <p>We retain your information only as long as necessary to provide our services and comply with legal obligations.</p>
-
-      <h3>Contact Us</h3>
-      <p>If you have questions about this Privacy Policy, contact us at:<br>
-      TJ's Plumbing · Penfield, NY · 585-671-7465 · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1c4832717d6f686e732e2e5c657d747373327f7371">[email&#160;protected]</a></p>
-    </div>
-  </div>
-
-  <!-- TERMS OF SERVICE MODAL -->
-  <div class="modal-overlay" id="terms-modal" role="dialog" aria-modal="true" aria-labelledby="terms-title"
-       onclick="if(event.target===this)this.classList.remove('open')">
-    <div class="modal-box">
-      <button class="modal-close" onclick="document.getElementById('terms-modal').classList.remove('open')" aria-label="Close">&#x2715;</button>
-      <h2 id="terms-title">Terms of Service</h2>
-      <p class="modal-date">Effective Date: January 1, 2026</p>
-
-      <h3>Services</h3>
-      <p>TJ's Plumbing provides residential plumbing services in Monroe County, New York. All work is performed by a licensed and insured master plumber.</p>
-
-      <h3>Estimates and Quotes</h3>
-      <p>All quotes are free and provided in writing before any work begins. Final pricing may vary if additional issues are discovered during service. Any changes to scope will be communicated and approved before proceeding.</p>
-
-      <h3>Satisfaction Guarantee</h3>
-      <p>All labor is guaranteed for one year from the date of service. If you experience an issue related to our work within that period, we will return to correct it at no charge.</p>
-
-      <h3>Scheduling and Cancellations</h3>
-      <p>We ask for reasonable notice if you need to cancel or reschedule an appointment. Emergency services are available 24/7.</p>
-
-      <h3>SMS Consent</h3>
-      <p>By providing your phone number, you agree to receive SMS messages from TJ's Plumbing. You may opt out at any time by replying STOP. Message and data rates may apply.</p>
-
-      <h3>Limitation of Liability</h3>
-      <p>TJ's Plumbing is not liable for pre-existing conditions, damages caused by circumstances beyond our control, or issues unrelated to the work performed.</p>
-
-      <h3>Contact Us</h3>
-      <p>TJ's Plumbing · Penfield, NY · 585-671-7465 · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5b0f75363a282f293469691b223a33343475383436">[email&#160;protected]</a></p>
-    </div>
-  </div>
-
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     // ── GHL FORM HANDLER ──
     const GHL_WEBHOOK_URL = '/.netlify/functions/submit';
     const form    = document.getElementById('ghl-form');
     const btn     = document.getElementById('form-btn');
     const success = document.getElementById('form-success');
+    const failure = document.getElementById('form-error');
+    const btnLabel = btn ? btn.textContent : 'Send';
 
     if (form) {
       form.addEventListener('submit', async (e) => {
@@ -947,7 +999,8 @@
           return;
         }
         form.phone.setCustomValidity('');
-        if (!consent) { document.getElementById('sms-consent').focus(); return; }
+        /* SMS consent is OPTIONAL and must never block submission. Its value rides
+           along in the payload so the CRM only texts contacts who opted in. */
 
         btn.disabled = true;
         btn.textContent = 'Sending…';
@@ -962,6 +1015,7 @@
           source     : "TJ's Plumbing Website",
           tags       : ["website-lead", form.service.value || "general"].filter(Boolean),
           notify_sms : "5854605987",
+          sms_consent: consent,
           customField: {
             service_type    : form.service.value,
             customer_notes  : form.message.value.trim()
@@ -974,34 +1028,27 @@
             headers : { 'Content-Type': 'application/json' },
             body    : JSON.stringify(payload)
           });
-          if (!res.ok) throw new Error('Network error');
-        } catch (err) {
-          console.error('[GHL] Error:', err);
-        } finally {
+          if (!res.ok) throw new Error('Lead endpoint returned ' + res.status);
+          /* Success is shown ONLY after the lead is confirmed sent. */
           form.style.display = 'none';
           success.style.display = 'block';
           success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } catch (err) {
+          console.error('[Lead] Submit failed:', err);
+          /* Never tell a customer with a plumbing emergency that we received a
+             message we did not receive. Show the failure and give them the phone. */
+          if (failure) {
+            failure.style.display = 'block';
+            failure.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+          btn.disabled = false;
+          btn.textContent = btnLabel;
         }
       });
     }
 
-    // ── SCROLL REVEAL ── Fixed stagger: index calculated once per batch, not re-queried post-unobserve
-    // ── FAQ ACCORDION ── Accessible: toggles aria-expanded, keyboard friendly
-    document.querySelectorAll('.faq-q').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const isOpen = btn.getAttribute('aria-expanded') === 'true';
-        document.querySelectorAll('.faq-q').forEach(b => {
-          b.setAttribute('aria-expanded', 'false');
-          const panel = document.getElementById(b.getAttribute('aria-controls'));
-          if (panel) panel.classList.remove('open');
-        });
-        if (!isOpen) {
-          btn.setAttribute('aria-expanded', 'true');
-          const panel = document.getElementById(btn.getAttribute('aria-controls'));
-          if (panel) panel.classList.add('open');
-        }
-      });
-    });
+    // FAQ accordion is attached once, in the next script. It used to be attached here too,
+    // so a tap opened the answer and immediately closed it.
   </script>
 
 
@@ -1021,6 +1068,16 @@
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     reveals.forEach(el => io.observe(el));
+
+    /* Failsafe: if the observer never fires for an element (scroll quirks, bfcache
+       restore, print, in-page anchor jump), reveal everything after 2.5s so the
+       page can never sit blank. */
+    setTimeout(() => {
+      document.querySelectorAll('.reveal:not(.visible)').forEach(el => el.classList.add('visible'));
+    }, 2500);
+    window.addEventListener('beforeprint', () => {
+      document.documentElement.classList.remove('js-reveal');
+    });
 
     // ── FAQ ACCORDION ──
     document.querySelectorAll('.faq-q').forEach(btn => {
