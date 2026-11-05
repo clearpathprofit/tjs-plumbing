@@ -16,3 +16,36 @@
     X-Frame-Options = "SAMEORIGIN"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "geolocation=(), microphone=(), camera=(), payment=()"
+
+# Added Nov 4, 2026: HSTS site-wide, and a strict Content-Security-Policy on the
+# static service pages (no scripts run there). The homepage has no CSP yet because
+# it loads the chat widget from another domain.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Strict-Transport-Security = "max-age=31536000"
+
+[[headers]]
+  for = "/emergency-plumber/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; img-src 'self'; style-src 'self'; script-src 'none'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+
+[[headers]]
+  for = "/water-heater-repair/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; img-src 'self'; style-src 'self'; script-src 'none'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+
+[[headers]]
+  for = "/sump-pump-service/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; img-src 'self'; style-src 'self'; script-src 'none'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+
+[[headers]]
+  for = "/drain-cleaning/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; img-src 'self'; style-src 'self'; script-src 'none'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+
+[[headers]]
+  for = "/plumber-penfield-ny/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; img-src 'self'; style-src 'self'; script-src 'none'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
