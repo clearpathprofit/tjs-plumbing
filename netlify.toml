@@ -1,0 +1,40 @@
+# Security headers only. Build settings stay in the Netlify UI (no build step; publishes the repo root).
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    X-Frame-Options = "SAMEORIGIN"
+    Strict-Transport-Security = "max-age=31536000"
+
+# Strict Content-Security-Policy on the new static pages (no scripts run there).
+# The homepage is left without a CSP for now: it loads the chat widget from another domain.
+[[headers]]
+  for = "/emergency-plumber/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; img-src 'self'; style-src 'self'; script-src 'none'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+[[headers]]
+  for = "/water-heater-repair/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; img-src 'self'; style-src 'self'; script-src 'none'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+[[headers]]
+  for = "/sump-pump-service/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; img-src 'self'; style-src 'self'; script-src 'none'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+[[headers]]
+  for = "/drain-cleaning/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; img-src 'self'; style-src 'self'; script-src 'none'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+[[headers]]
+  for = "/plumber-penfield-ny/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; img-src 'self'; style-src 'self'; script-src 'none'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+[[headers]]
+  for = "/privacy/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; img-src 'self'; style-src 'self'; script-src 'none'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+[[headers]]
+  for = "/terms/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; img-src 'self'; style-src 'self'; script-src 'none'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
