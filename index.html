@@ -393,7 +393,8 @@
     .form-field textarea { resize: vertical; min-height: 110px; }
     .form-submit { display: flex; justify-content: center; margin-top: 20px; }
     .form-submit .btn-primary { border: none; cursor: pointer; font-family: var(--font); font-size: 16px; padding: 14px 36px; }
-    .hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    .hp-field { height: 0; overflow: hidden; opacity: 0; margin: 0; }
+    .hp-field input { font-size: 16px; }
     .form-note { font-size: 13px; color: var(--light); text-align: center; margin-top: 14px; }
 
     /* ── FOOTER ── */
@@ -723,7 +724,7 @@
   </section>
 
   <!-- REVIEWS: removed Nov 19, 2026. The three cards shipped with the April template
-       (Mike D. / Sarah L. / James R.) had no source. Re-add only real reviews copied word
+       (three first-name/initial testimonials) had no source. Re-add only real reviews copied word
        for word from Tom's Google Business Profile, with first name + last initial. -->
 
   <!-- SERVICE AREAS -->
