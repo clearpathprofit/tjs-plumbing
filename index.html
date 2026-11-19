@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="description" content="TJ's Plumbing: Penfield and Rochester plumber, 24/7. Emergency repairs, drain cleaning, water heaters and sump pumps. Licensed master plumber. 585-671-7465." />
   <meta name="robots" content="index, follow" />
@@ -390,6 +393,8 @@
     .form-field textarea { resize: vertical; min-height: 110px; }
     .form-submit { display: flex; justify-content: center; margin-top: 20px; }
     .form-submit .btn-primary { border: none; cursor: pointer; font-family: var(--font); font-size: 16px; padding: 14px 36px; }
+    .hp-field { height: 0; overflow: hidden; opacity: 0; margin: 0; }
+    .hp-field input { font-size: 16px; }
     .form-note { font-size: 13px; color: var(--light); text-align: center; margin-top: 14px; }
 
     /* ── FOOTER ── */
@@ -404,7 +409,8 @@
     .footer-brand-block { display: flex; flex-direction: column; gap: 3px; }
     .footer-addr { font-size: 13px; color: rgba(255,255,255,0.4); text-decoration: none; }
     .footer-addr:hover { color: rgba(255,255,255,0.7); }
-    .footer-links { display: flex; gap: 20px; }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { white-space: nowrap; }
 
 
     /* ── LEGAL MODALS ── */
@@ -605,8 +611,8 @@
     <div class="hero-badges" aria-label="Key credentials">
       <span><span class="dot" aria-hidden="true"></span>Available 24/7</span>
       <span><span class="dot" aria-hidden="true"></span>Licensed &amp; Insured</span>
-      <span><span class="dot" aria-hidden="true"></span>Rochester Local</span>
-      <span><span class="dot" aria-hidden="true"></span>Satisfaction Guaranteed</span>
+      <span><span class="dot" aria-hidden="true"></span>Since 1988</span>
+      <span><span class="dot" aria-hidden="true"></span>BBB A+ Accredited</span>
     </div>
   </section>
 
@@ -623,7 +629,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
         </div>
         <h3>Emergency Repairs</h3>
-        <p>Burst pipe at 2am? We're there. Our rapid-response team is on call around the clock to stop damage before it spreads.</p>
+        <p>Burst pipe at 2am? Call TJ. Fast repairs to stop the damage before it spreads.</p>
         <a class="service-more" href="/emergency-plumber/">Emergency plumbing details &rarr;</a>
       </div>
 
@@ -649,7 +655,7 @@
       <!-- NEW: Sump Pump -->
       <div class="service-card reveal">
         <div class="service-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/><line x1="12" y1="15" x2="12" y2="17"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c2 0 2-1.5 4-1.5S8 12 10 12s2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5"/><path d="M2 18c2 0 2-1.5 4-1.5S8 18 10 18s2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5"/><path d="M12 2v6m-3-3l3 3 3-3"/></svg>
         </div>
         <h3>Sump Pump Service</h3>
         <p>Rochester winters are brutal. We install, repair, and replace sump pumps so your basement stays dry all year.</p>
@@ -706,41 +712,20 @@
       </div>
       <div class="trust-item">
         <div class="trust-num">38<em>+</em></div>
-        <div class="trust-label">Years in Rochester</div>
-        <div class="trust-desc">38 years of trust, built one satisfied customer at a time.</div>
+        <div class="trust-label">Years in Business</div>
+        <div class="trust-desc">Serving Penfield and Rochester since 1988.</div>
       </div>
       <div class="trust-item">
-        <div class="trust-num">100<em>%</em></div>
-        <div class="trust-label">Satisfaction Guarantee</div>
-        <div class="trust-desc">If it's not right, we come back and fix it. No charge.</div>
+        <div class="trust-num">A<em>+</em></div>
+        <div class="trust-label">BBB Rating</div>
+        <div class="trust-desc">BBB accredited and A+ rated. All labor guaranteed for one year.</div>
       </div>
     </div>
   </section>
 
-  <!-- REVIEWS -->
-  <section class="reviews" aria-labelledby="reviews-h">
-    <p class="section-eyebrow reveal">Customer Reviews</p>
-    <h2 class="section-title reveal" id="reviews-h">What Rochester<br>is saying.</h2>
-    <p class="section-sub reveal">Don't take our word for it — here's what our neighbors have to say.</p>
-    <div class="reviews-grid">
-      <div class="review-card reveal">
-        <div class="stars" role="img" aria-label="5 out of 5 stars"><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span></div>
-        <p class="review-text">"TJ showed up within an hour of my call — on a Sunday night. Fixed the burst pipe fast and the price was totally fair. I won't call anyone else."</p>
-        <div><div class="review-name">Mike D.</div><div class="review-location">Irondequoit, NY</div></div>
-      </div>
-      <div class="review-card reveal">
-        <div class="stars" role="img" aria-label="5 out of 5 stars"><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span></div>
-        <p class="review-text">"Had TJ replace our water heater and repipe the basement. Clean, professional, on time, and he explained everything before starting. Highly recommend."</p>
-        <div><div class="review-name">Sarah L.</div><div class="review-location">Pittsford, NY</div></div>
-      </div>
-      <div class="review-card reveal">
-        <div class="stars" role="img" aria-label="5 out of 5 stars"><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span></div>
-        <p class="review-text">"Called three plumbers. TJ was the only one who picked up. He was at our house in 45 minutes and had our drain cleared in under an hour. Incredible."</p>
-        <div><div class="review-name">James R.</div><div class="review-location">Greece, NY</div></div>
-      </div>
-    </div>
-    <!-- Review count placeholder — update with real numbers from Tom's GBP -->
-  </section>
+  <!-- REVIEWS: removed Nov 19, 2026. The three cards shipped with the April template
+       (three first-name/initial testimonials) had no source. Re-add only real reviews copied word
+       for word from Tom's Google Business Profile, with first name + last initial. -->
 
   <!-- SERVICE AREAS -->
   <section class="areas" aria-labelledby="areas-h">
@@ -813,11 +798,11 @@
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false" aria-controls="faq3">How quickly can you respond to an emergency?<span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
-        <div class="faq-a" id="faq3">Most emergency calls in Monroe County get a response within 45–60 minutes. We aim to be the fastest in the area.</div>
+        <div class="faq-a" id="faq3">Call 585-671-7465 and TJ will tell you on the phone when he can be there. Being based in Penfield keeps him close to the east side of Monroe County.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false" aria-controls="faq4">Are you licensed and insured in New York State?<span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
-        <div class="faq-a" id="faq4">Yes. TJ holds a valid New York State Master Plumber license and carries full liability insurance and workers' comp on every job.</div>
+        <button class="faq-q" aria-expanded="false" aria-controls="faq4">Are you licensed and insured?<span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+        <div class="faq-a" id="faq4">Yes. TJ is a licensed master plumber and carries liability insurance.</div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false" aria-controls="faq5">Do you guarantee your work?<span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
@@ -893,6 +878,8 @@
             <label for="phone">Phone Number</label>
             <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="585-555-0100" required />
           </div>
+          <!-- Honeypot: hidden from people and screen readers; bots fill it. -->
+          <div class="hp-field" aria-hidden="true"><label for="company_website">Company website</label><input type="text" id="company_website" name="company_website" tabindex="-1" autocomplete="off" /></div>
           <div class="form-field">
             <label for="email">Email Address</label>
             <input type="email" id="email" name="email" autocomplete="email" placeholder="jane@email.com" />
@@ -1016,6 +1003,7 @@
           tags       : ["website-lead", form.service.value || "general"].filter(Boolean),
           notify_sms : "5854605987",
           sms_consent: consent,
+          company_website: form.company_website ? form.company_website.value : '',
           customField: {
             service_type    : form.service.value,
             customer_notes  : form.message.value.trim()

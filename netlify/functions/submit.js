@@ -35,6 +35,13 @@ exports.handler = async (event) => {
     return { statusCode: 400, headers: CORS, body: JSON.stringify({ error: 'Invalid JSON' }) };
   }
 
+  // Honeypot: a hidden field people never see. Bots fill it in. Answer 200 so the
+  // bot thinks it worked, but forward nothing to the CRM.
+  if (body.company_website) {
+    return { statusCode: 200, headers: CORS, body: JSON.stringify({ success: true }) };
+  }
+  delete body.company_website;
+
   const first = body.firstName || body.first_name || '';
   const last = body.lastName || body.last_name || '';
 
